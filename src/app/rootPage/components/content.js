@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { dive } from '../../../functions'
 import SongCard from './songCard'
 
 const Content = props =>

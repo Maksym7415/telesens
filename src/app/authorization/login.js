@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { dive } from '../../functions'
 import { authorization } from '../../redux/reducers/actions'
@@ -11,8 +11,10 @@ const Login = props => {
 
   const changeLogin = e => setLogin(login = e.target.value)
   const changePassword = e => setPassword(password = e.target.value)
-  const click = () => login !== '' && password !== '' && props.log(password, login)
-  const test = () => console.log('p: ' + password + '. l: ' + login)
+  const click = () => {
+                        login !== '' && password !== '' && props.log(password, login)
+                        localStorage.RBTauth = (JSON.stringify({password, login}))
+                      }
   if(!props.data) {
     return (
       <div>
@@ -31,4 +33,4 @@ const Login = props => {
   }
 }
 
-export default connect(state => ({data: dive`${state}promise.login.payload.data`}), {log: authorization})(Login)
+export default connect(state => ({data: dive`${state}authorization.payload.data`}), {log: authorization})(Login)

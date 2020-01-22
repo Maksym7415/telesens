@@ -1,11 +1,11 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { promiseReducer } from './reducers/promiseReducer.js'
-import { catIdReducer } from './reducers/catIdReducer'
+import { promiseReducer } from './reducers/promiseReducer'
+import { loginReducer } from './reducers/loginReducer'
 
 const reducers = combineReducers({
   promise: promiseReducer,
-  categoryID: catIdReducer
+  authorization: loginReducer
 })
 
 const store = createStore(

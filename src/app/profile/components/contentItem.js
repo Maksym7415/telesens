@@ -13,8 +13,8 @@ const Article = props =>
       <p>Content type: Single </p>
       <p>Date of purchase: {props.purchDate}</p>
       <p>Paid period of validity: {props.validity}</p>
-      <input type=' checkbox' value= {props.defPlay} onChange= {props.changeDefPlay}/>
-      <input type=' checkbox' value= {props.prolong} onChange= {props.changeProlong}/>
+      <input type='checkbox' checked= {props.defPlay}/>
+      <input type='checkbox' checked= {props.prolong}/>
       <button onClick= {props.onClick}> Remove content </button>
     </div>
   </div>

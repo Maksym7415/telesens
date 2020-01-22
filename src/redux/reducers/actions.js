@@ -1,4 +1,5 @@
 import { actionPromise } from './promiseReducer'
+import { actionLogin } from './loginReducer'
 import axios from 'axios'
 import { queryCats, queryContent, authorize, buy } from './constants'
 
@@ -23,7 +24,9 @@ const getContent = (id) => actionPromise('content', axios({
       data: queryContent(id)
 }))
 
-const authorization = (password, tel) => actionPromise('login', axios({
+const logout = () => ({type: 'LOGOUT'})
+
+const authorization = (password, tel) => actionLogin(axios({
       method: 'post',
       url: 'https://t-rbt.telesens.ua/t-rbt/subscriber',
       headers: {
@@ -33,14 +36,14 @@ const authorization = (password, tel) => actionPromise('login', axios({
       data: authorize(password, tel)
 }))
 
-const buySong = (passw, tel, id, serv) => actionPromise('buy', axios({
+const buySong = (passw, tel, id) => actionPromise('buy', axios({
       method: 'post',
       url: 'https://t-rbt.telesens.ua/t-rbt/subscriber',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         Accept: 'application/json',
       },
-      data: buy(passw, tel, id, serv)
+      data: buy(passw, tel, id)
 }))
 
-export { getCategories, getContent, authorization, buySong }
+export { getCategories, getContent, authorization, buySong, logout }

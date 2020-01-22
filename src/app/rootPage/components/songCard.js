@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const SongCard = props =>
   <div>
-    <img alt='photo' src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}`}/>
+    <img alt='logo' src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}`}/>
     <span> {props.title} </span>
     <span> {props.artist} </span>
     <div>

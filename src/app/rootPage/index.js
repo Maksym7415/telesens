@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getCategories, getContent } from '../../redux/reducers/actions.js'
-import { dive, firstItem, defaultSubCat } from '../../functions'
-import Header from './components/header'
+import { getCategories, getContent, authorization } from '../../redux/reducers/actions.js'
+import { dive, defaultSubCat } from '../../functions'
 import Genres from './components/genres'
 import SubCats from './components/subCats'
-import { actionAddId } from '../../redux/reducers/catIdReducer'
 import Content from './components/content'
 
 const RootPage = props => {
@@ -15,6 +13,11 @@ const RootPage = props => {
   useEffect(() => {
      props.getData()
      props.getContent(subCat)
+     if (localStorage.RBTauth) {
+      const {password, login} = JSON.parse(localStorage.RBTauth)
+      props.auth(password, login)
+    }
+
   }, [current, subCat])
 
 
@@ -30,4 +33,8 @@ const RootPage = props => {
    )
 }
 
-export default connect (state => ({data: dive`${state}promise.categories.payload.data.searchResult.element`, content: dive`${state}promise.content.payload.data.searchResult.element`}), {getData: getCategories, getContent}) (RootPage)
+export default connect (state => ({
+                                    data: dive`${state}promise.categories.payload.data.searchResult.element`,
+                                    content: dive`${state}promise.content.payload.data.searchResult.element`,
+                                    logged: dive`${state}authorization.payload.data`
+                                  }), {getData: getCategories, getContent, auth: authorization}) (RootPage)

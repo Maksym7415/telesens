@@ -21,14 +21,13 @@ const queryContent = id => encodeURI(
 const authorize = (passw, tel) => encodeURI(
         `p0=subscriberRetrieve&p1=` +
         `{"scope":` +
-        `{"returnGiftContent":true,"returnPersonalContent":true,` + `"returnPlayConditions":true,"returnPreservedContent":true,"returnPublicContent":true,"returnSubscriptions":true},` +
-        `"password":${passw},"subsIdent":${tel}}`
+        `{"returnGiftContent":true,"returnPersonalContent":true,"returnPlayConditions":true,"returnPreservedContent":true,"returnPublicContent":true,"returnSubscriptions":true},"password":${passw},"subsIdent":${tel}}`
 
 )
 
-const buy = (passw, tel, id, serv) => encodeURI(
+const buy = (passw, tel, id) => encodeURI(
         `p0=contentPurchase&p1=` +
-        `{"password":${passw},"subsIdent":${tel}, "contentNoOrVirtContentNo":id,"serviceNoOrVirtServiceNo":serv}`
+        `{"password":${passw},"subsIdent":${tel}, "contentNoOrVirtContentNo":id,"serviceNoOrVirtServiceNo":1}`
 
 )
 
