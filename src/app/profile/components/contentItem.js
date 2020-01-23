@@ -5,16 +5,15 @@ const Article = props =>
   <div>
     <div>
       <img alt='logo' src= {props.src}/>
-      <p> {props.artist} </p>
       <p> {props.title} </p>
-      <Link to={`/info/${props.id}/${props.catId}`}><i className="fas fa-info-circle"/></Link>
+      <p> {props.artist} <Link to={`/info/${props.id}/${props.catId}`}><i className="fas fa-info-circle"/></Link> </p>
     </div>
     <div>
       <p>Content type: Single </p>
       <p>Date of purchase: {props.purchDate}</p>
       <p>Paid period of validity: {props.validity}</p>
-      <input type='checkbox' checked= {props.defPlay}/>
-      <input type='checkbox' checked= {props.prolong}/>
+      <label><input type='checkbox' checked= {props.defPlay}/> default play</label>
+      <label><input type='checkbox' checked= {props.prolong}/> autoprolongation</label>
       <button onClick= {props.onClick}> Remove content </button>
     </div>
   </div>

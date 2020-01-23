@@ -1,0 +1,74 @@
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  padding: 10px;
+}
+.profile h3 {
+  padding: 10px 0;
+  border-bottom: 1px solid #b3b3b3;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.profile > div {
+  width: 45%;
+  border: 1px solid #b3b3b3;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+.profile div > div img {
+  width: 140px;
+  height: 180px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profile div:first-child {
+  background-color: #f7f7f7;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-right: 10px;
+}
+.profile div:first-child > img + p {
+  padding: 5px 0;
+  font-size: 16px;
+}
+.profile div:first-child p + p {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  color: #0f0afc;
+}
+.profile div + div p {
+  font-size: 14px;
+  padding: 5px;
+}
+.profile div + div {
+  display: flex;
+  flex-direction: column;
+}
+.profile div + div label {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #3dc92c;
+  padding: 5px 0;
+}
+.profile label input {
+  margin: 0 5px 0 0;
+}
+.profile button {
+  width: 140px;
+  height: 35px;
+  margin-top: 5px;
+  border-color: #3dc92c;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #3dc92c;
+  outline: none;
+}

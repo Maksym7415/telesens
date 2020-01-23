@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Genres = props =>
-  <div>
-    <span> Genres </span>
+  <div className= 'genres'>
+    <h2> Genres </h2>
     <ul> {props.data}</ul>
   </div>
 

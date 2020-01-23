@@ -1,0 +1,32 @@
+.buy {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  padding: 10px;
+  font-size: 14px;
+}
+.buy h3 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #b3b3b3;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.buy p {
+  padding-bottom: 10px;
+}
+.buy hr {
+  width: 100%;
+  border-bottom: 1px solid #b3b3b3;
+}
+.buy button {
+  margin-top: 10px;
+  width: 70px;
+  height: 30px;
+  margin-left: auto;
+  background-color: #3dc92c;
+  outline: none;
+}

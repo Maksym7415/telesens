@@ -17,10 +17,11 @@ const Login = props => {
                       }
   if(!props.data) {
     return (
-      <div>
-        <span>Authorize</span><br/>
+      <div className= 'login'>
+        <h3>Authorize</h3>
         <label>Phone number: <input value= {login} onChange= {changeLogin}/></label>
         <label>Password: <input value= {password} onChange= {changePassword}/></label> <br/>
+        <p> To get the password send SMS to number 444 </p>
         <button onClick= {click}>Login</button>
       </div>
     )

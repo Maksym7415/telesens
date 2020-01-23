@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { urlParams, dive, searchSong } from '../../functions'
-import { getContent, buySong, authorization } from '../../redux/reducers/actions'
+import { getContent, buySong } from '../../redux/reducers/actions'
 
 const BuySong = props => {
   let [id,] = useState(urlParams(props.match.url))
@@ -13,24 +13,22 @@ const BuySong = props => {
 
   useEffect(() => {
       props.getContent(+id[id.length-1])
-      if (localStorage.RBTauth) {
-      const {password, login} = JSON.parse(localStorage.RBTauth)
-      props.auth(password, login)
-    }
-    }, [])
-    console.log(props.authorization)
-  if (props.authorization || content !== null) {
+  }, [])
+
+  const {password, login} = JSON.parse(localStorage.RBTauth)
+
+  if (content !== null) {
     return (
-      <div>
-        <span> Title: {content.title}</span>
-        <span> Artist: {content.artist}</span>
-        <span> Purchase price: {content.amountOnetime}$</span>
-        <button onClick={()=> props.buy('0000', '0994006503', +content.contentNo)}>Buy</button>
+      <div className= 'buy'>
+        <h3>Content purchase</h3>
+        <p> Title: {content.title}</p>
+        <p> Artist: {content.artist}</p>
+        <p> Purchase price: {content.amountOnetime}$</p>
+        <hr/>
+        <button onClick={()=> props.buy(password, login, +content.contentNo)}>Buy</button>
       </div>
     )
-  } else {
-    return <Redirect to='/login'/>
-  }
+  } else return ''
 }
 
-export default connect(state => ({data: dive`${state}promise.content.payload.data.searchResult.element`, authorization: dive`${state}authorization.payload.data`}), {getContent, buy: buySong, auth: authorization})(BuySong)
+export default connect(state => ({data: dive`${state}promise.content.payload.data.searchResult.element`, purchase: dive`${state}promise.buy.payload.status`}), {getContent, buy: buySong})(BuySong)

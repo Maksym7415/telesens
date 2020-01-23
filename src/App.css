@@ -1,5 +1,36 @@
-
-
+@import url('app/rootPage/components/header/styles.css');
+@import url('app/rootPage/styles.css');
+@import url('app/rootPage/components/songCard/styles.css');
+@import url('app/authorization/styles.css');
+@import url('app/buySong/styles.css');
+@import url('app/profile/styles.css');
+@import url('app/songInfo/styles.css');
+body {
+  margin: 0;
+  font-size: 12px;
+  font-family: sans-serif, Arial;
+  padding: 20px 0;
+  background-color: #f7f7f7;
+}
+body * {
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+  width: auto;
+}
+#root {
+  max-width: 80vw;
+  margin: 0 auto;
+}
+h1, h2, h3, h4, p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #000000;
+}
 li {
-  list-style-type: none
+  list-style-type: none;
+  cursor: pointer;
 }

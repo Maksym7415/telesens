@@ -11,19 +11,20 @@ import News from './app/newsPage/news'
 import SongInfo from './app/songInfo/songInfo'
 import Profile from './app/profile'
 import BuySong from './app/buySong'
+import PrivateRoute from './routing'
 
 function App() {
   return (
-    <Provider store = {store}>
+    <Provider  store = {store}>
       <Router history = {createHistory()}>
         <Header/>
         <Switch>
           <Route path='/' exact component= {RootPage}/>
           <Route path= '/news' exact component= {News}/>
-          <Route path= '/profile' exact component= {Profile}/>
+          <PrivateRoute fallback= '/login' path= '/profile' exact component= {Profile}/>
           <Route path= '/login' exact component = {Login}/>
           <Route path= '/info/:param/:param' exact component = {SongInfo}/>
-          <Route path= '/buy/:param/:param' exact component= {BuySong}/>
+          <PrivateRoute fallback= '/login' path= '/buy/:param/:param' exact component= {BuySong}/>
         </Switch>
       </Router>
     </Provider>

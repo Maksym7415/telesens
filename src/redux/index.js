@@ -2,6 +2,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { promiseReducer } from './reducers/promiseReducer'
 import { loginReducer } from './reducers/loginReducer'
+import { authorization } from './reducers/actions'
 
 const reducers = combineReducers({
   promise: promiseReducer,
@@ -16,5 +17,9 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
+if (localStorage.RBTauth) {
+    const {password, login} = JSON.parse(localStorage.RBTauth)
+    store.dispatch(authorization(password, login))
+}
 
 export default store

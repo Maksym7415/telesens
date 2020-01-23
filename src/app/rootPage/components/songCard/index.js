@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const SongCard = props =>
-  <div>
+  <div className= 'song-card'>
     <img alt='logo' src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}`}/>
     <span> {props.title} </span>
     <span> {props.artist} </span>

@@ -1,0 +1,56 @@
+.root-page {
+  padding: 10px 20px;
+  background-color: #ffffff;
+}
+.root-page > h3 {
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+  height: 30px;
+  align-items: center;
+}
+.root-page > h3 span {
+  color: #3dc92c;
+  padding-left: 10px;
+}
+.genres h2, .subcats h2, h2 {
+  font-size: 16px;
+  font-weight: normal;
+}
+.genres, .subcats {
+  border-bottom: 1px solid #cccccc;
+  height: 35px;
+}
+.genres{
+  display: flex;
+  align-items: center;
+}
+.genres ul, .subcats ul {
+  display: flex;
+  margin: 0;
+}
+.genres ul li {
+  margin: 0 5px;
+  border: 2px solid #3dc92c;
+  border-radius: 10px;
+  padding: 3px 10px;
+}
+.genres ul li:hover {
+  background-color: #95ee8a;
+}
+.subcats {
+  align-items: center;
+}
+.subcats ul li {
+  margin: 0 5px;
+  border: 2px solid #b3b3b3;
+  border-radius: 10px;
+  padding: 3px 10px;
+}
+.subcats ul li:hover {
+  background-color: #dedcdc;
+}
+.content {
+  display: flex;
+  padding-top: 10px;
+}

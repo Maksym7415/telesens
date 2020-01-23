@@ -2,8 +2,8 @@ import React from 'react'
 
 const SubCats = props =>
 
-  <div>
-  <span> Categories </span>
+  <div className= 'subcats' style= {props.style}>
+  <h2> Categories </h2>
     <ul>
     {props.data}
     </ul>

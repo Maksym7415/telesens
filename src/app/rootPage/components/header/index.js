@@ -1,14 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { dive } from '../../../functions'
-import { logout } from '../../../redux/reducers/actions'
+import { dive } from '../../../../functions'
+import { logout } from '../../../../redux/reducers/actions'
 
 const Header = props => {
-  
+
   return (
     <>
       <header>
+        <div>
+          <h1>
+            T-RBT Service
+          </h1>
+          <ul>
+            <li>EN</li>
+            <li>|</li>
+            <li>RU</li>
+          </ul>
+        </div>
         <nav>
           <Link to= '/'> Catalog </Link>
           <Link to= '/news'> News </Link>

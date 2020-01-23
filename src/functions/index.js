@@ -18,6 +18,27 @@ function defaultSubCat (arr, id) {
     return res
 }
 
+function currentCatSubcat (arr, id) {
+    let res = {
+      genre:'',
+      subCat:''
+    }
+    arr && arr.forEach(item => {
+      if (item.contentCatId === id) {
+        res.subCat = item.catName
+        if (res.subCat !== '') {
+          for (let key of arr) {
+            if (item.parentCatId === key.contentCatId) {
+              res.genre = key.catName
+            }
+          }
+        }
+      }
+
+    })
+    return res
+}
+
 function urlParams (str) {
   return str.split('/')
 }
@@ -26,4 +47,4 @@ function searchSong (arr, id) {
   return arr ? arr.filter(el => el.contentNo === id ? el : '') : ''
 }
 
-export { dive, firstItem, defaultSubCat, urlParams, searchSong }
+export { dive, firstItem, defaultSubCat, urlParams, searchSong, currentCatSubcat   }
