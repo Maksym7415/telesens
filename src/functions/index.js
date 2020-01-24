@@ -19,17 +19,16 @@ function defaultSubCat (arr, id) {
 }
 
 function currentCatSubcat (arr, id) {
-    let res = {
-      genre:'',
-      subCat:''
-    }
+    let res = {}
     arr && arr.forEach(item => {
       if (item.contentCatId === id) {
         res.subCat = item.catName
+        res.subCatID = item.contentCatId
         if (res.subCat !== '') {
           for (let key of arr) {
             if (item.parentCatId === key.contentCatId) {
               res.genre = key.catName
+              res.genreID = key.contentCatId
             }
           }
         }

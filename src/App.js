@@ -11,7 +11,7 @@ import News from './app/newsPage/news'
 import SongInfo from './app/songInfo/songInfo'
 import Profile from './app/profile'
 import BuySong from './app/buySong'
-import PrivateRoute from './routing'
+import PrivateRoute from './routing/privateRoute'
 
 function App() {
   return (

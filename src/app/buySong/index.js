@@ -17,7 +17,7 @@ const BuySong = props => {
 
   const {password, login} = JSON.parse(localStorage.RBTauth)
 
-  if (content !== null) {
+  if (content !== null && !props.purchase) {
     return (
       <div className= 'buy'>
         <h3>Content purchase</h3>
@@ -28,7 +28,7 @@ const BuySong = props => {
         <button onClick={()=> props.buy(password, login, +content.contentNo)}>Buy</button>
       </div>
     )
-  } else return ''
+  } else return <Redirect to= '/'/>
 }
 
 export default connect(state => ({data: dive`${state}promise.content.payload.data.searchResult.element`, purchase: dive`${state}promise.buy.payload.status`}), {getContent, buy: buySong})(BuySong)
