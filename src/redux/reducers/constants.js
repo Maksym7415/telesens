@@ -27,7 +27,7 @@ const authorize = (passw, tel) => encodeURI(
 
 const buy = (passw, tel, id) => encodeURI(
         `p0=contentPurchase&p1=` +
-        `{"password":${passw},"subsIdent":${tel}, "contentNoOrVirtContentNo":id,"serviceNoOrVirtServiceNo":1}`
+        `{"password":${passw},"subsIdent":${tel}, "contentNoOrVirtContentNo":${id},"serviceNoOrVirtServiceNo":1}`
 
 )
 

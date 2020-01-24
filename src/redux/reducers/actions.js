@@ -1,4 +1,4 @@
-import { actionPromise } from './promiseReducer'
+import { actionPromise, actionDeletePromise } from './promiseReducer'
 import { actionLogin } from './loginReducer'
 import axios from 'axios'
 import { queryCats, queryContent, authorize, buy } from './constants'
@@ -46,4 +46,6 @@ const buySong = (passw, tel, id) => actionPromise('buy', axios({
       data: buy(passw, tel, id)
 }))
 
-export { getCategories, getContent, authorization, buySong, logout }
+const delSong = () => actionDeletePromise('buy')
+
+export { delSong, getCategories, getContent, authorization, buySong, logout }

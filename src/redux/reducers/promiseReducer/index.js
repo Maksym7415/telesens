@@ -33,4 +33,11 @@ function  actionPromise (name, promise) {
   }
 }
 
-export { promiseReducer, actionPromise }
+function actionDeletePromise (name) {
+  const actionDelete = () => ({type: 'PROMISE', status: 'PENDING', name, payload: null, error: null})
+
+  return dispatch =>
+    dispatch(actionDelete())
+}
+
+export { promiseReducer, actionPromise, actionDeletePromise }

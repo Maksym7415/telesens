@@ -8,7 +8,7 @@ const SongCard = props =>
     <span> {props.artist} </span>
     <div>
       <span> {props.price} </span>
-      <Link to= {`/buy/${props.id}/${props.catId}`}><i className="fas fa-shopping-cart"></i></Link>
+      <Link onClick= {props.onClick} to= {`/buy/${props.id}/${props.catId}`}><i className="fas fa-shopping-cart"></i></Link>
       <Link to= '/gift'> <i className="fas fa-gift"></i> </Link>
       <Link to= {`/info/${props.id}/${props.catId}`}> <i className="fas fa-info-circle"></i> </Link>
     </div>

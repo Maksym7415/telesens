@@ -19,4 +19,4 @@ let PrivateRoute = props =>
     }
 }/>
 
-export default connect(state => ({data: dive`${state}authorization.payload`})) (PrivateRoute)
+export default PrivateRoute

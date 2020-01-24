@@ -1,12 +1,14 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { promiseReducer } from './reducers/promiseReducer'
+import { promiseReducer} from './reducers/promiseReducer'
 import { loginReducer } from './reducers/loginReducer'
 import { authorization } from './reducers/actions'
+import { synchroReducer } from './reducers/synchroReducer'
 
 const reducers = combineReducers({
   promise: promiseReducer,
-  authorization: loginReducer
+  authorization: loginReducer,
+  synchro: synchroReducer
 })
 
 const store = createStore(

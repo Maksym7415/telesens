@@ -39,6 +39,7 @@
   background-color: #95ee8a;
 }
 .subcats {
+  display: flex;
   align-items: center;
 }
 .subcats ul li {
