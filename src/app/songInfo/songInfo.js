@@ -5,7 +5,7 @@ import { getContent } from '../../redux/reducers/actions'
 
 const SongInfo = props => {
 
-  let [id,] = useState(urlParams(props.match.url))
+  let [id] = useState(urlParams(props.match.url))
 
   let [content, setContent] = useState(null)
 

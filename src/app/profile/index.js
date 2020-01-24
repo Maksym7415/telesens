@@ -1,6 +1,5 @@
 import React,{ useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import { dive } from '../../functions'
 import Article from './components/contentItem'
 import { authorization } from '../../redux/reducers/actions'
@@ -9,10 +8,8 @@ const Profile = props => {
 
   useEffect(() => {
     const {password, login} = JSON.parse(localStorage.RBTauth)
-     props.auth(password, login)
+    props.auth(password, login)
   }, [])
-
-  console.log(props.data)
 
   return (
       <div className= 'profile'>

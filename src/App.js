@@ -3,7 +3,6 @@ import './App.css';
 import store from './redux'
 import { Provider } from 'react-redux'
 import {Router, Route, Switch} from 'react-router-dom'
-import createHistory from 'history/createBrowserHistory'
 import RootPage from './app/rootPage'
 import Header from './app/rootPage/components/header'
 import Login from './app/authorization/login'
@@ -12,11 +11,12 @@ import SongInfo from './app/songInfo/songInfo'
 import Profile from './app/profile'
 import BuySong from './app/buySong'
 import PrivateRoute from './routing/privateRoute'
+import history from './routing/history'
 
 function App() {
   return (
     <Provider  store = {store}>
-      <Router history = {createHistory()}>
+      <Router history = {history}>
         <Header/>
         <Switch>
           <Route path='/' exact component= {RootPage}/>
