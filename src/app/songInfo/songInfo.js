@@ -15,12 +15,12 @@ const SongInfo = props => {
       props.getContent(+id[id.length-1])
     }, [])
 
-  return content !== null ? (
+  return content !== null && content ? (
   <div className= 'song-info'>
     <h3> Content information </h3>
     <div>
       <div>
-        <img alt='logo' src={`https://t-rbt.telesens.ua/t-rbt/image?id=${content.imageId}`}/>
+        <img alt='logo' src={ content.imageId? `https://t-rbt.telesens.ua/t-rbt/image?id=${content.imageId}`: ''}/>
       </div>
       <div>
         <span> Content Type: Single </span>

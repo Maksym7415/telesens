@@ -7,7 +7,6 @@ let PrivateRoute = props =>
 <Route {...props}
     component={pageComponentProps => {
         const PageComponent = props.component
-        console.log(pageComponentProps)
         if (localStorage.RBTauth) {
             return (
                 <PageComponent {...pageComponentProps}/>

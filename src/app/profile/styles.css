@@ -13,6 +13,8 @@
 }
 .profile > div {
   width: 45%;
+  height: 280px;
+  margin: 0 5px 5px 0;
   border: 1px solid #b3b3b3;
   display: flex;
   flex-direction: row;
@@ -47,7 +49,7 @@
   font-size: 14px;
   padding: 5px;
 }
-.profile div + div {
+.profile div > div {
   display: flex;
   flex-direction: column;
 }

@@ -11,8 +11,6 @@ const RootPage = props => {
   let [subCat, setSubCat] = useState(22)
   let [nameIdInfo, setNameIdInfo] = useState({})
 
-  let style = current === null ? 'none' : 'flex'
-
   useEffect(() => {
      props.getData()
      props.getContent(subCat)
@@ -24,9 +22,9 @@ const RootPage = props => {
 
    return (
      <div className='root-page'>
-       <Genres data= {props.data && props.data.map(genre => !genre.parentCatId?  <li className= {nameIdInfo.genreID === genre.contentCatId ? 'active':''} onClick = {()=> {changeCurrent(genre.contentCatId); changeSubCat(defaultSubCat(props.data, genre.contentCatId)[0].contentCatId)}} key= {genre.contentCatId}>{genre.catName}</li> : '')}/>
+       <Genres data= {props.data && props.data.map(genre => !genre.parentCatId?  <li className= {nameIdInfo.genreID === genre.contentCatId ? 'active':''} onClick = {()=> {changeCurrent(genre.contentCatId); changeSubCat(defaultSubCat(props.data, genre.contentCatId)[0] && defaultSubCat(props.data, genre.contentCatId)[0].contentCatId)}} key= {genre.contentCatId}>{genre.catName}</li> : '')}/>
 
-       <SubCats style= {{display: style}} data= {props.data && current !== null && props.data.map(item => item.parentCatId && item.parentCatId === current? <li onClick = {() =>  changeSubCat(item.contentCatId)} className= {nameIdInfo.subCatID === item.contentCatId ? 'active':''} key={item.contentCatId}>{item.catName}</li>: '')}/>
+       <SubCats data= {props.data && current !== null && props.data.map(item => item.parentCatId && item.parentCatId === current? <li onClick = {() =>  changeSubCat(item.contentCatId)} className= {nameIdInfo.subCatID === item.contentCatId ? 'active':''} key={item.contentCatId}>{item.catName}</li>: '')}/>
 
        <h3>Content from: <span>{`"${nameIdInfo.genre ? nameIdInfo.genre +'/'+ nameIdInfo.subCat : 'Поп'}"`}</span></h3>
 

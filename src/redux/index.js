@@ -10,7 +10,12 @@ const reducers = combineReducers({
 })
 
 const store = createStore(
-  reducers, applyMiddleware(thunk)  
+  reducers,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__&&
+    window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 )
 if (localStorage.RBTauth) {
     const {password, login} = JSON.parse(localStorage.RBTauth)
