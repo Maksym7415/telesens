@@ -17,6 +17,7 @@ const BuySong = props => {
 
   const {password, login} = JSON.parse(localStorage.RBTauth)
 
+
   if (content !== null && !props.purchase) {
     return (
       <div className= 'buy'>
