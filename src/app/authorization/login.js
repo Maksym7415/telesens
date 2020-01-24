@@ -8,19 +8,25 @@ const Login = props => {
 
   let [login, setLogin] = useState('')
   let [password, setPassword] = useState('')
+  let [style, setStyle] = useState('none')
 
   const changeLogin = e => setLogin(login = e.target.value)
   const changePassword = e => setPassword(password = e.target.value)
   const click = () => {
-                        login !== '' && password !== '' && props.log(password, login)
-                        localStorage.RBTauth = (JSON.stringify({password, login}))
+                        if(login !== '' && password !== '') {
+                          props.log(password, login)
+                          localStorage.RBTauth = (JSON.stringify({password, login}))
+                        } else {
+                          setStyle(style = 'block')
+                        }
                       }
   if(!props.data) {
     return (
       <div className= 'login'>
         <h3>Authorize</h3>
         <label>Phone number: <input value= {login} onChange= {changeLogin}/></label>
-        <label>Password: <input value= {password} onChange= {changePassword}/></label> <br/>
+        <label>Password: <input value= {password} onChange= {changePassword}/></label>
+        <p style = {{display: style, color: 'red', marginBottom: '5px'}}>Incorrect password of phone number</p>
         <p> To get the password send SMS to number 444 </p>
         <button onClick= {click}>Login</button>
       </div>
