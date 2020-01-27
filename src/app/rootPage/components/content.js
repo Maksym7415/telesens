@@ -7,7 +7,7 @@ const Content = props => {
 
   let [progressStyle, setProgressStyle] = useState('0%')
   let [position, setPosition] = useState()
-  let [audio, setAudio] = useState(new Audio)
+  let [audio] = useState(new Audio())
   let [currentTime, setCurrentTime] = useState(new Audio().currentTime)
   let [int, setInt] = useState()
 
@@ -17,7 +17,6 @@ const Content = props => {
         setCurrentTime(currentTime = audio.currentTime)
         progress = Math.round(currentTime)*100/Math.round(audio.duration)
         setProgressStyle(progressStyle = `${progress}%`)
-        console.log(audio.currentTime)
       }, 500))
     }
 
@@ -32,7 +31,6 @@ const Content = props => {
         setCurrentTime(currentTime = 0)
         setProgressStyle(progressStyle = '0%')
         audio.pause()
-        console.log(currentTime)
       }
     }
 
