@@ -42,8 +42,12 @@ function urlParams (str) {
   return str.split('/')
 }
 
+function catSubCatName (arr, id) {
+  return arr.filter(item => item.contentCatId === id ? item.catName : '')
+}
+
 function searchSong (arr, id) {
   return arr ? arr.filter(el => el.contentNo === id ? el : '') : ''
 }
 
-export { dive, firstItem, defaultSubCat, urlParams, searchSong, currentCatSubcat   }
+export { dive, firstItem, defaultSubCat, urlParams, searchSong, currentCatSubcat, catSubCatName }

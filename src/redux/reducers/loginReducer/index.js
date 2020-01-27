@@ -1,9 +1,8 @@
-const loginReducer = (state, action) => {
+const loginReducer = (state= {}, action) => {
   const actions = {
     LOGIN() {
       const {status, payload, error} = action
       return {
-        ...state,
         status, payload, error
       }
     },
@@ -12,9 +11,7 @@ const loginReducer = (state, action) => {
       return {}
     }
   }
-  if(state === undefined) {
-    return {}
-  }
+  
   if(action.type in actions) {
     return actions[action.type]()
   }

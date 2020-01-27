@@ -1,4 +1,4 @@
-const synchroReducer = (state, action) => {
+const synchroReducer = (state = {}, action) => {
   const actions = {
     ADDSong () {
       const {song} = action
@@ -9,11 +9,7 @@ const synchroReducer = (state, action) => {
     DELSong () {
       return {}
     }
-  }
-
-  if (state === undefined) {
-    return {}
-  }
+  }  
 
   if(action.type in actions) {
     return actions[action.type]()

@@ -1,4 +1,4 @@
-const promiseReducer = (state, action) => {
+const promiseReducer = (state = {}, action) => {
   const actions = {
     PROMISE() {
       const {status, name, payload, error} = action
@@ -8,9 +8,7 @@ const promiseReducer = (state, action) => {
       }
     }
   }
-  if(state === undefined) {
-    return {}
-  }
+
   if(action.type in actions) {
     return actions[action.type]()
   }
