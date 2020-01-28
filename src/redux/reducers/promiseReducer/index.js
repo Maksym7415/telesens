@@ -17,8 +17,8 @@ const promiseReducer = (state = {}, action) => {
 
 function  actionPromise (name, promise) {
   const actionPending = () => ({type: 'PROMISE', status: 'PENDING', name, payload: null, error: null})
-  const actionResolved = payload => ({type: 'PROMISE', name, payload, error: null})
-  const actionError = error => ({type: 'PROMISE', name, payload: null, error})
+  const actionResolved = payload => ({type: 'PROMISE', status: 'RESOLVED', name, payload, error: null})
+  const actionError = error => ({type: 'PROMISE', status: 'ERROR', name, payload: null, error})
 
   return async dispatch => {
     dispatch(actionPending())

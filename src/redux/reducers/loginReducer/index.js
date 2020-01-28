@@ -11,7 +11,7 @@ const loginReducer = (state= {}, action) => {
       return {}
     }
   }
-  
+
   if(action.type in actions) {
     return actions[action.type]()
   }
@@ -20,8 +20,8 @@ const loginReducer = (state= {}, action) => {
 
 function  actionLogin (promise) {
   const actionPending = () => ({type: 'LOGIN', status: 'PENDING', payload: null, error: null})
-  const actionResolved = payload => ({type: 'LOGIN', payload, error: null})
-  const actionError = error => ({type: 'LOGIN', payload: null, error})
+  const actionResolved = payload => ({type: 'LOGIN', status: 'RESOLVED', payload, error: null})
+  const actionError = error => ({type: 'LOGIN', status: 'ERROR', payload: null, error})
 
   return async dispatch => {
     dispatch(actionPending())
