@@ -46,6 +46,8 @@ const buySong = (passw, tel, id) => actionPromise('buy', axios({
       data: buy(passw, tel, id)
 }))
 
+
+
 const delSong = () => actionDeletePromise('buy')
 
 export { delSong, getCategories, getContent, authorization, buySong, logout }

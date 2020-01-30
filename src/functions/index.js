@@ -14,40 +14,24 @@ function firstItem (arr) {
 }
 
 function defaultSubCat (arr, id) {
-    let res = arr && arr.filter(item => item.parentCatId && item.parentCatId === id)
-    return res
+    return arr && arr.filter(item => item.parentCatId && item.parentCatId === id)
 }
 
-function currentCatSubcat (arr, id) {
-    let res = {}
-    arr && arr.forEach(item => {
-      if (item.contentCatId === id) {
-        res.subCat = item.catName
-        res.subCatID = item.contentCatId
-        if (res.subCat !== '') {
-          for (let key of arr) {
-            if (item.parentCatId === key.contentCatId) {
-              res.genre = key.catName
-              res.genreID = key.contentCatId
-            }
-          }
-        }
-      }
-
-    })
-    return res
-}
 
 function urlParams (str) {
   return str.split('/')
 }
 
 function catSubCatName (arr, id) {
-  return arr.filter(item => item.contentCatId === id ? item.catName : '')
+  let res = ''
+  arr && arr.forEach(item => item.contentCatId === id ? res = item.catName : '')
+  return res
 }
 
 function searchSong (arr, id) {
-  return arr ? arr.filter(el => el.contentNo === id ? el : '') : ''
+  let res = {}
+  arr && arr.forEach(el => el.contentNo === id ? res = el : '')
+  return res
 }
 
-export { dive, firstItem, defaultSubCat, urlParams, searchSong, currentCatSubcat, catSubCatName }
+export { dive, firstItem, defaultSubCat, urlParams, searchSong, catSubCatName }

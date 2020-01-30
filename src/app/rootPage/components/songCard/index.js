@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 const SongCard = props => {
 
-
   return (
     <div className= 'song-card'>
       <img onClick= {props.playSong} alt='logo' src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}`}/>

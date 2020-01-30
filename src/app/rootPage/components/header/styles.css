@@ -30,8 +30,13 @@ header nav a {
 header nav a:active {
   background-color: #3dc92c;
 }
+header nav div {
+  margin-left: auto
+}
+header nav div span {
+  font-size: 14px
+}
 header nav button {
-  margin-left: auto;
   outline: none;
   background-color: transparent;
   border: none;

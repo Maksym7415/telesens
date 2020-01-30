@@ -1,15 +1,18 @@
 const synchroReducer = (state = {}, action) => {
   const actions = {
-    ADDSong () {
-      const {song} = action
+    ADD () {
+      const {name, data} = action
       return {
-        song
+        [name]: data
       }
     },
-    DELSong () {
-      return {}
+    DEL () {
+      delete state[action.name]
+      return {
+        ...state
+      }
     }
-  }  
+  }
 
   if(action.type in actions) {
     return actions[action.type]()
@@ -18,12 +21,20 @@ const synchroReducer = (state = {}, action) => {
   return state
 }
 
-function actionAdd (song) {
-  const addSong = () => ({type: 'ADDSong', song})
+const actionAdd =  (name, data) => {
+  const add = () => ({type: 'ADD', name, data})
 
   return dispatch => {
-    dispatch(addSong())
+    dispatch(add())
   }
 }
 
-export { synchroReducer, actionAdd }
+const actionDel = name => {
+  const del = () => ({type: 'DEL', name})
+
+  return dispatch => {
+    dispatch(del())
+  }
+}
+
+export { synchroReducer, actionAdd, actionDel }

@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { dive } from '../../functions'
 import { authorization } from '../../redux/reducers/actions'
-import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom'
+import history from '../../routing/history'
 
 const Login = props => {
 
@@ -12,15 +13,22 @@ const Login = props => {
 
   const changeLogin = e => setLogin(login = e.target.value)
   const changePassword = e => setPassword(password = e.target.value)
-  const click = () => {
-                        if(login !== '' && password !== '') {
+  const handleClick = () => {
+                        if(login.match(/[0-9]{10,}/g) !== null && password.match(/[0-9a-zA-Z]{4,}/g) !== null) {
                           props.log(password, login)
-                          localStorage.RBTauth = (JSON.stringify({password, login}))
                         } else {
                           setStyle(style = 'block')
                         }
                       }
-  if(!props.data) {
+
+  useEffect(() => {
+    if (props.data) {
+      localStorage.RBTauth = (JSON.stringify({password, login}))
+      history.push('/')
+    }
+    props.error && setStyle(style = 'block')
+  },[props.data, props.error])
+
     return (
       <div className= 'login'>
         <h3>Authorize</h3>
@@ -28,16 +36,13 @@ const Login = props => {
         <label>Password: <input value= {password} onChange= {changePassword}/></label>
         <p style = {{display: style, color: 'red', marginBottom: '5px'}}>Incorrect password of phone number</p>
         <p> To get the password send SMS to number 444 </p>
-        <button onClick= {click}>Login</button>
+        <button onClick= {handleClick}>Login</button>
       </div>
     )
-  } else {
-    return (
-      <div>
-        <Redirect to= '/'/>
-      </div>
-    )
-  }
 }
 
-export default connect(state => ({data: dive`${state}authorization.payload.data`}), {log: authorization})(Login)
+export default connect(state => ({
+                                  data: dive`${state}authorization.payload.data`,
+                                  error: dive`${state}authorization.error`
+                                }),
+                                {log: authorization})(Login)

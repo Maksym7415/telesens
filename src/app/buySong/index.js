@@ -1,43 +1,60 @@
-import React, { useEffect} from 'react'
+import React, { useState, useEffect} from 'react'
 import { connect } from 'react-redux'
-import { dive } from '../../functions'
-import { getContent, buySong, delSong } from '../../redux/reducers/actions'
+import { dive, urlParams, searchSong } from '../../functions'
+import { getContent, buySong } from '../../redux/reducers/actions'
+import { actionDeletePromise } from '../../redux/reducers/promiseReducer'
 import history from '../../routing/history'
 import Swal from 'sweetalert2'
 
 const BuySong = props => {
 
+  let [content, setContent] = useState()
+  let [id] = useState(urlParams(props.match.url))
+
   useEffect(() => {
-    if(dive`${props.purchase}payload.data`)  {
+    if (props.purchaseOk)  {
       Swal.fire({
         text: 'Operation is performed successfully',
-        onClose: () => props.del() && history.push('/')
+        onClose: () => props.delSong('buy') && history.push('/')
       })
     } else {
-      if (dive`${props.purchase}error`) {
+      if (props.purchaseEr) {
         Swal.fire({
           text: 'Content already in box',
-          onClose: () => props.del() && history.push('/')
+          onClose: () => props.delSong('buy') && history.push('/')
         })
-
       }
     }
   })
+  {console.log(props.match)}
+  !content && props.data && setContent(content = searchSong(props.data, +id[id.length-2]))
+
+  useEffect (() => {
+    props.getContent(+id[id.length-1])
+  }, [])
 
   const {password, login} = JSON.parse(localStorage.RBTauth)
 
-  if (props.data) {
+
     return (
       <div className= 'buy'>
         <h3>Content purchase</h3>
-        <p> Title: {props.data.title}</p>
-        <p> Artist: {props.data.artist}</p>
-        <p> Purchase price: {props.data.amountOnetime}$</p>
+        <p> Title: {content && content.title}</p>
+        <p> Artist: {content && content.artist}</p>
+        <p> Purchase price: {content && content.amountOnetime}$</p>
         <hr/>
-        <button onClick={()=> props.buy(password, login, +props.data.contentNo)}>Buy</button>
+        <button onClick={()=> props.buy(password, login, +content.contentNo)}>Buy</button>
       </div>
     )
-  } else return ''
 }
 
-export default connect(state => ({data: dive`${state}synchro.song`, purchase: dive`${state}promise.buy`}), {getContent, buy: buySong, del: delSong})(BuySong)
+export default connect(state => ({
+                                  data: dive`${state}promise.content.payload.data.searchResult.element`,
+                                  purchaseOk: dive`${state}promise.buy.payload.data`,
+                                  purchaseEr: dive`${state}promise.buy.error`
+                                }),
+                                {
+                                  getContent,
+                                  buy: buySong,
+                                  delSong: actionDeletePromise
+                                })(BuySong)

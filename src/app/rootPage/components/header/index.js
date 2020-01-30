@@ -8,6 +8,7 @@ const Header = props => {
 
   return (
     <>
+      {console.log(props.match)}
       <header>
         <div>
           <h1>
@@ -23,11 +24,20 @@ const Header = props => {
           <Link to= '/'> Catalog </Link>
           <Link to= '/news'> News </Link>
           <Link to= '/profile'> My Profile </Link>
-          {props.data && props.data.status === 200 ? <button onClick= {props.logout}>Logout</button> : <Link to= '/login'> Login </Link>}
+          {props.data ?
+            <div>
+              <span>You entered as {props.data.subsIdent}</span>
+              <button onClick= {props.logout}>Logout</button>
+            </div> :
+            <Link to= '/login'> Login </Link>}
         </nav>
         <div>
           <div>
-            <span> Your favorite melodies as a ring back tone!</span>
+            {
+              props.data && props.urlParam === '/profile' ?
+              <span> Subcriber {props.data.subsIdent} </span> :
+              <span> Your favorite melodies as a ring back tone!</span>
+            }
           </div>
           <div>
             <input value= {props.value} onChange = {props.onChange}/>
@@ -39,4 +49,7 @@ const Header = props => {
   )
 }
 
-export default connect(state => ({data: dive`${state}authorization.payload`}), {logout})(Header)
+export default connect(state => ({
+                                  data: dive`${state}authorization.payload.data.subscriber`,
+                                  urlParam: dive`${state}synchro.url`
+                                }), {logout})(Header)

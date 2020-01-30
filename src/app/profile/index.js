@@ -3,12 +3,17 @@ import { connect } from 'react-redux'
 import { dive } from '../../functions'
 import Article from './components/contentItem'
 import { authorization } from '../../redux/reducers/actions'
+import { actionAdd, actionDel } from '../../redux/reducers/synchroReducer'
 
 const Profile = props => {
 
   useEffect(() => {
     const {password, login} = JSON.parse(localStorage.RBTauth)
     props.auth(password, login)
+    props.addUrl('url', props.match.url)
+    return () => {
+      props.delUrl('url')
+    }
   }, [])
 
   return (
@@ -19,4 +24,4 @@ const Profile = props => {
   )
 }
 
-export default connect(state => ({data: dive`${state}authorization.payload.data`}), {auth: authorization})(Profile)
+export default connect(state => ({data: dive`${state}authorization.payload.data`}), {auth: authorization, addUrl: actionAdd, delUrl: actionDel})(Profile)
