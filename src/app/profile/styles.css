@@ -27,7 +27,7 @@
   margin-left: auto;
   margin-right: auto;
 }
-.profile div:first-child {
+.profile-item-wrapper {
   background-color: #f7f7f7;
   width: 180px;
   display: flex;

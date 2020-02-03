@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 
 const Article = props =>
   <div>
-    <div>
-      <img alt='logo' src= {props.src}/>
+    <div className = 'profile-item-wrapper'>
+      <img alt='logo' src= {props.src} onClick= {props.click}/>
+      <div style= {{display: props.display}} className= {props.playing === false ? 'animation-wrapper' : 'animation-wrapper animate--animated'}>
+          <div style= {{height: '5px', backgroundColor: 'blue', margin: '0', animationDuration: `${props.duration}s`}} className= 'animate'></div>
+      </div>
       <p> {props.title} </p>
       <p> {props.artist} <Link to={`/info/${props.id}/${props.catId}`}><i className="fas fa-info-circle"/></Link> </p>
     </div>

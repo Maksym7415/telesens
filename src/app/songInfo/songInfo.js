@@ -2,61 +2,42 @@ import React, {useState, useEffect} from 'react'
 import { connect } from 'react-redux'
 import { urlParams, dive, searchSong } from '../../functions'
 import { getContent } from '../../redux/reducers/actions'
+import ReactPlayer from 'react-player'
 
 const SongInfo = props => {
 
-  let [id] = useState(urlParams(props.match.url))
+  let [id] = useState(urlParams(props.match.url)) //setting subcat id and contentId from url
   let [content, setContent] = useState()
-  let [progressStyle, setProgressStyle] = useState('0%')
-  let [position, setPosition] = useState()
-  let [audio] = useState(new Audio())
-  let [currentTime, setCurrentTime] = useState(new Audio().currentTime)
-  let [int, setInt] = useState()
+  let [playing, setPlaying] = useState(false)
+  let [url, setUrl] = useState('')
+  let [progress, setProgress] = useState(null)
+  let [duration, setDuration] = useState()
 
-
-  !content && props.data && setContent(content = searchSong(props.data, +id[id.length-2]))
-  let progress = 0
-  let changeProgress = () => {
-    setInt(int = setInterval(() =>{
-      setCurrentTime(currentTime = audio.currentTime)
-      progress = Math.round(currentTime)*100/Math.round(audio.duration)
-      setProgressStyle(progressStyle = `${progress}%`)
-    }, 500))
-  }
 
   const handlePlay = () => {
-    if (currentTime === 0) {
-      setPosition(position = id)
-      audio.src = `https://t-rbt.telesens.ua/t-rbt/sound?id=${content.contentNo}&type=public`
-      audio.play()
-      changeProgress()
-    } else {
-      clearInterval(int)
-      setCurrentTime(currentTime = 0)
-      setProgressStyle(progressStyle = '0%')
-      audio.pause()
+      setUrl(url = `https://t-rbt.telesens.ua/t-rbt/sound?id=${content.contentNo}&type=public`)
+      setPlaying(playing = !playing)
+    if (playing === false) {
+      setUrl(url = '')
+      setProgress(progress = null)
     }
   }
 
-  audio.onended = () => {
-    clearInterval(int)
-    setProgressStyle(progressStyle = '0%')
-    setPosition(position = null)
-    setCurrentTime(currentTime = new Audio().currentTime)
-  }
+
+  !content && props.data && setContent(content = searchSong(props.data, +id[id.length-2])) //searching current song
 
   useEffect(() => {
-      props.getContent(+id[id.length-1])
+      props.getContent(+id[id.length-1]) //getting content by current subCat
     }, [])
 
   return content ? (
   <div className= 'song-info'>
     <h3> Content information </h3>
-    <div>
-      <div>
+    <div >
+      <div className= 'image-container'>
         <img alt='logo' onClick= {handlePlay} src={ content.imageId? `https://t-rbt.telesens.ua/t-rbt/image?id=${content.imageId}`: ''}/>
-        <div style= {{flexDirection: 'row'}} className= {currentTime !== 0 ? 'activeSong' : 'unActiveSong'}>
-          <div style= {{height: '5px', padding: '0', margin: '0', backgroundColor: 'blue', width: progressStyle}}></div>
+        <div style= {{display: playing === false ? 'none' : 'block'}} className= {playing === false ? 'animation-wrapper' : 'animation-wrapper animate--animated'}>
+          <div style= {{margin: '0', animationDuration: `${duration}s`}} className= 'animate'></div>
         </div>
       </div>
       <div>
@@ -71,6 +52,7 @@ const SongInfo = props => {
         <span> ID: {content.contentNo}</span>
       </div>
     </div>
+    <ReactPlayer style= {{display: 'none'}} onDuration= {value => setDuration(duration = value)} onProgress= {value => setProgress(progress = value.playedSeconds)} url= {url} playing= {playing}/>
   </div>
 ) : ''
 }

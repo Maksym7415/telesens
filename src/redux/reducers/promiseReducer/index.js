@@ -32,7 +32,7 @@ function  actionPromise (name, promise) {
 }
 
 function actionDeletePromise (name) {
-  const actionDelete = () => ({type: 'PROMISE', status: 'PENDING', name, payload: null, error: null})
+  const actionDelete = () => ({type: 'PROMISE', name})
 
   return dispatch =>
     dispatch(actionDelete())

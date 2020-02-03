@@ -13,7 +13,7 @@
   border-bottom: 1px solid #b3b3b3;
   margin-bottom: 10px;
 }
-.song-info div:first-child {
+.image-container {
   padding: 10px;
   background-color: #b3b3b3;
   height: 150px;

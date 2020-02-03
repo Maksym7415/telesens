@@ -12,6 +12,7 @@ import Profile from './app/profile'
 import BuySong from './app/buySong'
 import PrivateRoute from './routing/privateRoute'
 import history from './routing/history'
+import SearchResult from './app/searchComponent'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path= '/news' exact component= {News}/>
           <PrivateRoute fallback= '/login' path= '/profile' exact component= {Profile}/>
           <Route path= '/login' exact component = {Login}/>
+          <Route path= '/search' exact component = {SearchResult}/>
           <Route path= '/info/:param/:param' exact component = {SongInfo}/>
           <PrivateRoute fallback= '/login' path= '/buy/:param/:param' exact component= {BuySong}/>
         </Switch>

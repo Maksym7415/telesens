@@ -6,8 +6,8 @@ const SongCard = props => {
   return (
     <div className= 'song-card'>
       <img onClick= {props.playSong} alt='logo' src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}`}/>
-      <div className= {props.progressClass}>
-        <div  style= {props.progressStyle}></div>
+      <div style= {{display: props.display}} className= {props.class}>
+        <div style= {{margin: '0', animationDuration: `${props.duration}s`}} className= {'animate'}></div>
       </div>
       <span> {props.title} </span>
       <span> {props.artist} </span>

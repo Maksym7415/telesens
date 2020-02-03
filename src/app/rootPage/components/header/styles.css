@@ -23,11 +23,15 @@ header nav {
   padding-bottom: 10px;
 }
 header nav a {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 5px;
   margin-right: 10px;
   font-size: 1.3em;
-  height: 20px;
+  height: 30px;
 }
-header nav a:active {
+.active-nav-link {
   background-color: #3dc92c;
 }
 header nav div {

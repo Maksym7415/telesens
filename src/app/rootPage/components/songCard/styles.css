@@ -42,3 +42,23 @@
   display: flex;
   align-items: center;
 }
+.animation-wrapper {
+  height: 5px;
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff;
+  margin-bottom: 5px;
+}
+.animate {
+  width: 0;
+	height: 100%;
+	background-color: blue;
+  border-radius: 5px;
+}
+.animate--animated .animate {
+  animation: linear fill
+}
+@keyframes fill {
+		0% {width: 0%}
+		100% {width: 100%}
+}

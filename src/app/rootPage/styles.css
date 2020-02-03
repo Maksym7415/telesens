@@ -58,16 +58,3 @@
 .active {
   background-color: #3dc92c;
 }
-.activeSong {
-  display: flex;
-  flex-direction: row-reverse;
-  padding: 0;
-  width: 100%;
-  height: 5px;
-  border-radius: 5px;
-  border: 1px solid black;
-  margin-bottom: 5px;
-}
-.unActiveSong {
-  display: none;
-}

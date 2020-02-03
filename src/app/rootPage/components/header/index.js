@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { dive } from '../../../../functions'
-import { logout } from '../../../../redux/reducers/actions'
+import { logout, searchSong } from '../../../../redux/reducers/actions'
+import history from '../../../../routing/history'
+import { withRouter } from "react-router";
 
 const Header = props => {
 
+  let [query, setQuery] = useState('')
+  let [route, setRoute] = useState(history)
+
+  const handleChange = e => setQuery(query = e.target.value)
+
+  const handleClick = () => {
+    props.searchSong(query)
+    history.push('/search')
+    setQuery(query = '')
+  }
+
+        {console.log(query)}
   return (
     <>
-      {console.log(props.match)}
       <header>
         <div>
           <h1>
@@ -21,9 +34,9 @@ const Header = props => {
           </ul>
         </div>
         <nav>
-          <Link to= '/'> Catalog </Link>
-          <Link to= '/news'> News </Link>
-          <Link to= '/profile'> My Profile </Link>
+          <Link className= {props.history.location.pathname === '/' ? 'active-nav-link' : ''} to='/'> Catalog </Link>
+          <Link className= {props.history.location.pathname === '/news' ? 'active-nav-link' : ''} to='/news'> News </Link>
+          <Link className= {props.history.location.pathname === '/profile' ? 'active-nav-link' : ''} to='/profile'> My Profile </Link>
           {props.data ?
             <div>
               <span>You entered as {props.data.subsIdent}</span>
@@ -40,8 +53,8 @@ const Header = props => {
             }
           </div>
           <div>
-            <input value= {props.value} onChange = {props.onChange}/>
-            <button onClick = {props.onClick}><i className="fas fa-search"/></button>
+            <input value= {query} onChange = {handleChange}/>
+            <button onClick = {handleClick}><i className="fas fa-search"/></button>
           </div>
         </div>
       </header>
@@ -49,7 +62,8 @@ const Header = props => {
   )
 }
 
-export default connect(state => ({
+
+export default withRouter(connect(state => ({
                                   data: dive`${state}authorization.payload.data.subscriber`,
                                   urlParam: dive`${state}synchro.url`
-                                }), {logout})(Header)
+                                }), {logout, searchSong})(Header))
