@@ -34,9 +34,9 @@ const buy = (passw, tel, id) => encodeURI(
 const search = (query) => encodeURI(
         `p0=contentSearch&p1=` +
         `{"subsIdent":"","password":"","serviceNo":-1,"searchParameters":` +
-        `{"pagination":` + `{"offset":0,"pageSize":24}, "searchFilter":` +
-        `{"or":` + `[{"like":` + `{"name":"Title","stringValue":"%${query}%"}},` +
-        `{"like":` + `{"name":"Artist","stringValue":"%${query}%"}}]},"sortOrder":` +
+        `{"pagination":{"offset":0,"pageSize":24}, "searchFilter":` +
+        `{"or":[{"like":{"name":"Title","stringValue":"%${query}%"}},` +
+        `{"like":{"name":"Artist","stringValue":"%${query}%"}}]},"sortOrder":` +
         `[{"attribute":"ContentNo","ascending":true}]}}`
 )
 

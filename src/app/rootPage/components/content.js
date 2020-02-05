@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import SongCard from './songCard'
 import ReactPlayer from 'react-player'
 
@@ -12,13 +12,13 @@ const Content = props => {
   let [duration, setDuration] = useState()
 
 
-  const handlePlay = (id) => {
-    if (`https://t-rbt.telesens.ua/t-rbt/sound?id=${id}&type=public` === url) {
+  const handlePlay = (iD) => {
+    if (`https://t-rbt.telesens.ua/t-rbt/sound?id=${iD}&type=public` === url) {
       setPlaying(playing = false)
     } else {
-      setUrl(url = `https://t-rbt.telesens.ua/t-rbt/sound?id=${id}&type=public`)
+      setUrl(url = `https://t-rbt.telesens.ua/t-rbt/sound?id=${iD}&type=public`)
       setPlaying(playing = true)
-      setId(id = id)
+      setId(id = iD)
     }
     if (playing === false) {
       setUrl(url = '')

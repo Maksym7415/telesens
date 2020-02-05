@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { dive } from '../../../../functions'
@@ -9,7 +9,6 @@ import { withRouter } from "react-router";
 const Header = props => {
 
   let [query, setQuery] = useState('')
-  let [route, setRoute] = useState(history)
 
   const handleChange = e => setQuery(query = e.target.value)
 
@@ -19,7 +18,6 @@ const Header = props => {
     setQuery(query = '')
   }
 
-        {console.log(query)}
   return (
     <>
       <header>
@@ -47,7 +45,7 @@ const Header = props => {
         <div>
           <div>
             {
-              props.data && props.urlParam === '/profile' ?
+              props.data && props.history.location.pathname === '/profile' ?
               <span> Subcriber {props.data.subsIdent} </span> :
               <span> Your favorite melodies as a ring back tone!</span>
             }
@@ -63,7 +61,4 @@ const Header = props => {
 }
 
 
-export default withRouter(connect(state => ({
-                                  data: dive`${state}authorization.payload.data.subscriber`,
-                                  urlParam: dive`${state}synchro.url`
-                                }), {logout, searchSong})(Header))
+export default withRouter(connect(state => ({data: dive`${state}authorization.payload.data.subscriber`}), {logout, searchSong})(Header))

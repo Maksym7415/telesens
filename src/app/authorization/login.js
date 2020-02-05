@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { dive } from '../../functions'
 import { authorization } from '../../redux/reducers/actions'
-import { Redirect } from 'react-router-dom'
 import history from '../../routing/history'
+import Swal from 'sweetalert2'
 
 const Login = props => {
 
@@ -14,7 +14,7 @@ const Login = props => {
   const changeLogin = e => setLogin(login = e.target.value)
   const changePassword = e => setPassword(password = e.target.value)
   const handleClick = () => {
-                        if(login.match(/[0-9]{10,}/g) !== null && password.match(/[0-9a-zA-Z]{4,}/g) !== null) {
+                        if(login.match(/^[0-9]{10,12}$/g) !== null && password.match(/^[0-9a-zA-Z]{4,12}$/g) !== null) {
                           props.log(password, login)
                         } else {
                           setStyle(style = 'block')
@@ -24,7 +24,10 @@ const Login = props => {
   useEffect(() => {
     if (props.data) {
       localStorage.RBTauth = (JSON.stringify({password, login}))
-      history.push('/')
+      Swal.fire({
+        text: `You entered as ${props.data.subscriber.subsIdent}`,
+        onClose: () => history.push('/')
+      })
     }
     props.error && setStyle(style = 'block')
   },[props.data, props.error])

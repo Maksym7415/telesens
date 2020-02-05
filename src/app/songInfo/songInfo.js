@@ -10,7 +10,6 @@ const SongInfo = props => {
   let [content, setContent] = useState()
   let [playing, setPlaying] = useState(false)
   let [url, setUrl] = useState('')
-  let [progress, setProgress] = useState(null)
   let [duration, setDuration] = useState()
 
 
@@ -19,7 +18,6 @@ const SongInfo = props => {
       setPlaying(playing = !playing)
     if (playing === false) {
       setUrl(url = '')
-      setProgress(progress = null)
     }
   }
 
@@ -52,7 +50,7 @@ const SongInfo = props => {
         <span> ID: {content.contentNo}</span>
       </div>
     </div>
-    <ReactPlayer style= {{display: 'none'}} onDuration= {value => setDuration(duration = value)} onProgress= {value => setProgress(progress = value.playedSeconds)} url= {url} playing= {playing}/>
+    <ReactPlayer style= {{display: 'none'}} onDuration= {value => setDuration(duration = value)} url= {url} playing= {playing}/>
   </div>
 ) : ''
 }

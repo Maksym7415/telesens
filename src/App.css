@@ -20,6 +20,9 @@ img {
   max-width: 100%;
   width: auto;
 }
+button {
+  cursor: pointer;
+}
 #root {
   max-width: 80vw;
   margin: 0 auto;

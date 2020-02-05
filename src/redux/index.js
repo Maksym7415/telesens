@@ -19,6 +19,7 @@ const store = createStore(
     window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 )
+
 if (localStorage.RBTauth) {
     const {password, login} = JSON.parse(localStorage.RBTauth)
     store.dispatch(authorization(password, login))
