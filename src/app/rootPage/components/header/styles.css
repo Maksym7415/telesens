@@ -10,6 +10,7 @@ header > div {
 header > div h1 {
   color: #3dc92c;
   font-size: 4em;
+  cursor: pointer;
 }
 header > div ul {
   display: flex;

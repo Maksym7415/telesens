@@ -13,6 +13,7 @@ import BuySong from './app/buySong'
 import PrivateRoute from './routing/privateRoute'
 import history from './routing/history'
 import SearchResult from './app/searchComponent'
+import PageNotFound from './app/components/notFoundPage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path= '/search' exact component = {SearchResult}/>
           <Route path= '/info/:param/:param' exact component = {SongInfo}/>
           <PrivateRoute fallback= '/login' path= '/buy/:param/:param' exact component= {BuySong}/>
+          <Route path="*" component={PageNotFound}/>
         </Switch>
       </Router>
     </Provider>

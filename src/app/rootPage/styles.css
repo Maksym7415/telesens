@@ -54,6 +54,7 @@
 .content {
   display: flex;
   padding-top: 10px;
+  flex-wrap: wrap;
 }
 .active {
   background-color: #3dc92c;

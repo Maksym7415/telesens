@@ -4,25 +4,27 @@ import { connect } from 'react-redux'
 import { dive } from '../../../../functions'
 import { logout, searchSong } from '../../../../redux/reducers/actions'
 import history from '../../../../routing/history'
-import { withRouter } from "react-router";
+import { withRouter } from "react-router"
 
 const Header = props => {
 
   let [query, setQuery] = useState('')
-
   const handleChange = e => setQuery(query = e.target.value)
+  const handleHome = () => history.push('/')
 
   const handleClick = () => {
-    props.searchSong(query)
-    history.push('/search')
-    setQuery(query = '')
+    if (query !== '') {
+      props.searchSong(query)
+      history.push('/search')
+      setQuery(query = '')
+    }
   }
-
+  
   return (
     <>
       <header>
         <div>
-          <h1>
+          <h1 onClick= {handleHome}>
             T-RBT Service
           </h1>
           <ul>
