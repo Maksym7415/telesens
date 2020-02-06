@@ -18,7 +18,7 @@ const RootPage = props => {
   useEffect(() => {
     props.getData()
   }, [])
-  console.log('ok')
+  
   const handleClickGenre = (data, catId) => {
     setCurrent(catId)
     setSubCat(defaultSubCat(data, catId)[0] && defaultSubCat(data, catId)[0].contentCatId)

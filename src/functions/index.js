@@ -17,7 +17,6 @@ function defaultSubCat (arr, id) {
     return arr && arr.filter(item => item.parentCatId && item.parentCatId === id)
 }
 
-
 function urlParams (str) {
   return str.split('/')
 }
@@ -34,4 +33,16 @@ function searchSong (arr, id) {
   return res
 }
 
-export { dive, firstItem, defaultSubCat, urlParams, searchSong, catSubCatName }
+function parseDate (str) {
+  return str.split('/').map(i => {
+    if (i.length === 1) {
+      return '0'+ i
+    } else return i
+  }).join('/').split(':').map(i => {
+    if (i.length === 1) {
+      return '0'+ i
+    } else return i
+  }).join(':')
+}
+
+export { dive, firstItem, defaultSubCat, urlParams, searchSong, catSubCatName, parseDate }
