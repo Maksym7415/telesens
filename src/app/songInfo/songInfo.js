@@ -21,8 +21,12 @@ const SongInfo = props => {
     }
   }
 
-
-  !content && props.data && setContent(content = searchSong(props.data, +id[id.length-2])) //searching current song
+  useEffect(() => {
+    if (props.data) {
+      console.log('effect')
+      setContent(content = searchSong(props.data, +id[id.length-2]))
+    }
+  }, [props.data])
 
   useEffect(() => {
       props.getContent(+id[id.length-1]) //getting content by current subCat
@@ -32,6 +36,7 @@ const SongInfo = props => {
   <div className= 'song-info'>
     <h3> Content information </h3>
     <div >
+    {console.log(content, id)}
       <div className= 'image-container'>
         <img alt='logo' onClick= {handlePlay} src={ content.imageId? `https://t-rbt.telesens.ua/t-rbt/image?id=${content.imageId}`: ''}/>
         <div style= {{display: playing === false ? 'none' : 'block'}} className= {playing === false ? 'animation-wrapper' : 'animation-wrapper animate--animated'}>
@@ -52,7 +57,7 @@ const SongInfo = props => {
     </div>
     <ReactPlayer style= {{display: 'none'}} onDuration= {value => setDuration(duration = value)} url= {url} playing= {playing}/>
   </div>
-) : ''
+) : null
 }
 
 export default connect(state => ({data: dive`${state}promise.content.payload.data.searchResult.element`}), {getContent})(SongInfo)

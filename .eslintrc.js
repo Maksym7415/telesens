@@ -1,12 +1,12 @@
 module.exports = {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
     },
     "extends": [
-      "plugin:react/recommended",
-      "airbnb",
-      "standart"
+        "react-app",
+        "standart",
+        "airbnb",
     ],
     "globals": {
         "Atomics": "readonly",
@@ -16,21 +16,26 @@ module.exports = {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2020,
-        "sourceType": "module",
-        "allowImportExportEverywhere": true
+        "ecmaVersion": 2018,
+        "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
+    "plugins": ["react"],
     "rules": {
         "linebreak-style": [
             "error",
             "windows"
         ],
         "semi": [
-            "error",
+            "error", 
             "never"
+        ],
+        "arrow-spacing": [
+            "error",
+            "always"
+        ],
+        "no-console": [
+            "error",
+            "always"
         ],
     }
 };

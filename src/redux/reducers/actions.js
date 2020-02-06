@@ -7,7 +7,7 @@ const promise = (data) => axios({
   method: 'post',
   url: 'https://t-rbt.telesens.ua/t-rbt/subscriber',
   headers: {
-    'Content-Type': `application/x-www-form-urlencoded`,
+    'Content-Type': `application/x-www-form-urlencoded;charset=UTF-8`,
     Accept: 'application/json',
   },
   data

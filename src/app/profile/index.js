@@ -29,7 +29,7 @@ const Profile = props => {
   return props.data ? (
       <div className= 'profile'>
         <h3> Content </h3>
-        {props.data.publicContentItem.map(item => <Article key= {item.contentNo} artist= {item.artist} title= {item.title} id= {item.contentNo} catId= {item.contentCatId} src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${item.imageId}`} defPlay= {true} prolong= {item.renewable} purchDate= {parseDate(`${item.createdDt.day}/${item.createdDt.month}/${item.createdDt.year} ${item.createdDt.hour}:${item.createdDt.minute}:${item.createdDt.second}`)} validity= {parseDate(`${item.endDt.day}/${item.endDt.month}/${item.endDt.year}`)} playing= {playing} duration= {duration} click= {() => handlePlay(item.contentNo)} display= {id === item.contentNo ? 'block' : 'none'}/>)}
+        {props.data.publicContentItem ? props.data.publicContentItem.map(item => <Article key= {item.contentNo} artist= {item.artist} title= {item.title} id= {item.contentNo} catId= {item.contentCatId} src= {item.imageId ? `https://t-rbt.telesens.ua/t-rbt/image?id=${item.imageId}` : require('../images/melody.jfif')} defPlay= {true} prolong= {item.renewable} purchDate= {parseDate(`${item.createdDt.day}/${item.createdDt.month}/${item.createdDt.year} ${item.createdDt.hour}:${item.createdDt.minute}:${item.createdDt.second}`)} validity= {parseDate(`${item.endDt.day}/${item.endDt.month}/${item.endDt.year}`)} playing= {playing} duration= {duration} click= {() => handlePlay(item.contentNo)} display= {id === item.contentNo ? 'block' : 'none'}/>) : <p> No data in your account </p>}
 
         <ReactPlayer style= {{display: 'none'}} onDuration= {value => setDuration(duration = value)} url= {url} playing= {playing}/>
       </div>
