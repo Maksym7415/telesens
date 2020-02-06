@@ -19,8 +19,8 @@ const Login = props => {
                         } else {
                           setStyle(style = 'block')
                         }
-                      }
-
+  }
+  
   useEffect(() => {
     if (props.data) {
       localStorage.RBTauth = (JSON.stringify({password, login}))
@@ -47,5 +47,4 @@ const Login = props => {
 export default connect(state => ({
                                   data: dive`${state}authorization.payload.data`,
                                   error: dive`${state}authorization.error`
-                                }),
-                                {log: authorization})(Login)
+                                }),{log: authorization})(Login)

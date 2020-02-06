@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { getCategories, getContent } from '../../redux/reducers/actions.js'
+import { getCategories, getContent } from '../../redux/reducers/actions'
 import { dive, defaultSubCat, catSubCatName } from '../../functions'
 import Genres from './components/genres'
 import SubCats from './components/subCats'
@@ -12,19 +12,19 @@ const RootPage = props => {
   let [subCat, setSubCat] = useState(22)
 
   useEffect(() => {
-     props.getContent(subCat)
+    props.getContent(subCat)
   }, [subCat])
 
   useEffect(() => {
     props.getData()
   }, [])
-
+  console.log('ok')
   const handleClickGenre = (data, catId) => {
     setCurrent(catId)
     setSubCat(defaultSubCat(data, catId)[0] && defaultSubCat(data, catId)[0].contentCatId)
   } /*here in changeSubCat() I'm cheking parentCatId for existance of contentCatId, because category 'Для детей' haven't it*/
 
-   return (
+  return (
      <div className='root-page'>
        {props.data ? <Genres data= {props.data.map(genre => !genre.parentCatId?  <li className= {current === genre.contentCatId ? 'active':''} onClick = {()=> handleClickGenre(props.data, genre.contentCatId)} key= {genre.contentCatId}>{genre.catName}</li> : '')}/> : <Preloader/>}
 

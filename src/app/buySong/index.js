@@ -34,8 +34,6 @@ const BuySong = props => {
     props.getContent(+id[id.length-1])
   }, [])
 
-
-
     return (
       <div className= 'buy'>
         <h3>Content purchase</h3>

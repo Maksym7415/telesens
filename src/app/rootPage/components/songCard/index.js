@@ -5,7 +5,7 @@ const SongCard = props => {
 
   return (
     <div className= 'song-card'>
-      <img onClick= {props.playSong} alt='logo' src= {`https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}`}/>
+      <img onClick= {props.playSong} alt='logo' src= {props.src ? `https://t-rbt.telesens.ua/t-rbt/image?id=${props.src}` : require('../../../images/melody.jfif')}/>
       <div style= {{display: props.display}} className= {props.class}>
         <div style= {{margin: '0', animationDuration: `${props.duration}s`}} className= {'animate'}></div>
       </div>
