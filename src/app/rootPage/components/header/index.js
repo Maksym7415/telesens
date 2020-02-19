@@ -19,7 +19,13 @@ const Header = props => {
       setQuery(query = '')
     }
   }
-  
+
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      handleClick()
+    }
+  }
+
   return (
     <>
       <header>
@@ -53,7 +59,7 @@ const Header = props => {
             }
           </div>
           <div>
-            <input value= {query} onChange = {handleChange}/>
+            <input value= {query} onKeyDown= {handleKeyDown} onChange = {handleChange}/>
             <button onClick = {handleClick}><i className="fas fa-search"/></button>
           </div>
         </div>
