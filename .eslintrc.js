@@ -2,24 +2,27 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
+        "node": true
     },
     "extends": [
         "react-app",
-        "standart",
         "airbnb",
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
     },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 2018,
+        "ecmaVersion": 6,
         "sourceType": "module"
     },
-    "plugins": ["react"],
+    "plugins": [
+        "react",
+        "react-hooks",
+    ],
     "rules": {
         "linebreak-style": [
             "error",
@@ -29,13 +32,38 @@ module.exports = {
             "error", 
             "never"
         ],
-        "arrow-spacing": [
-            "error",
-            "always"
+        "no-console": 0,
+        "no-alert": "warn",
+        "comma-dangle": [
+            "error", 
+            "never"
         ],
-        "no-console": [
-            "error",
-            "always"
+        "arrow-spacing": "error",
+        "react/prop-types": 0,
+        "react-hooks/exhaustive-deps": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react/jsx-filename-extension": [
+            1,
+            { "extensions": [
+                ".js",
+                ".jsx"
+            ] }
         ],
+        "no-confusing-arrow": 0,
+        "react/destructuring-assignment": [
+            "error",
+            "never"
+        ],
+        "jsx-quotes": [
+            "error",
+            "prefer-single"
+        ],
+        "object-curly-spacing": 0,
+        "sort-imports": "off",
+        "no-return-assign": 0,
+        "prefer-const": 0,
+        "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/label-has-associated-control": 0,
+        "react/button-has-type": 0,
     }
 };
